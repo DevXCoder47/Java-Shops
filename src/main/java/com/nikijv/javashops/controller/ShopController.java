@@ -43,7 +43,10 @@ public String home(Model model) {
             , @RequestParam("email") String email
             , @RequestParam("site") String site
             , @RequestParam("category") Category category
-            , @RequestParam("description") String description) {
+            , @RequestParam("description") String description) throws Exception {
+        if(shops.stream().anyMatch(s -> s.getEmail().equals(email))){
+            throw new Exception("Such email is already occupied");
+        }
         shops.add(new Shop(name, address, phone, email, site, category, description));
         dtos.add(new ShopDto(name, phone, email, site, address, category));
         return "redirect:/home";
@@ -85,7 +88,10 @@ public String home(Model model) {
             , @RequestParam("email") String email
             , @RequestParam("site") String site
             , @RequestParam("category") Category category
-            , @RequestParam("description") String description) {
+            , @RequestParam("description") String description) throws Exception {
+        if(shops.stream().anyMatch(s -> s.getEmail().equals(email))){
+            throw new Exception("Such email is already occupied");
+        }
         shops.add(new Shop(name, address, phone, email, site, category, description));
         dtos.add(new ShopDto(name, phone, email, site, address, category));
         return "redirect:/home";
