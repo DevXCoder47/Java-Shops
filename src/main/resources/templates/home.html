@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Address Book</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<h2>Address Book List</h2>
+<form th:action="@{/filterByName}" method="post">
+  <label for="name">Filter by name:</label>
+  <input type="text" id="name" name="name"/>
+  <button type="submit">Filter</button>
+</form>
+<br/>
+<form th:action="@{/filterByCategory}" method="post">
+  <label for="category">Filter by category:</label>
+  <select id="category" name="category">
+    <option value="">Select category</option>
+    <option value="Grocery">Grocery</option>
+    <option value="Hardware">Hardware</option>
+    <option value="Sport">Sport</option>
+  </select>
+  <button type="submit">Filter</button>
+</form>
+<br/>
+<form th:action="@{/filterByAddress}" method="post">
+  <label for="address">Filter by address:</label>
+  <input type="text" id="address" name="address"/>
+  <button type="submit">Filter</button>
+</form>
+<br/>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Site</th>
+    <th>Address</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="shop : ${shops}">
+    <td th:text="${shop.name}"></td>
+    <td th:text="${shop.phone}"></td>
+    <td th:text="${shop.email}"></td>
+    <td th:text="${shop.site}"></td>
+    <td th:text="${shop.address}"></td>
+    <td th:text="${shop.category}"></td>
+    <td>
+      <form th:action="@{/select}" method="post">
+        <input type="hidden" th:value="${shop.email}" name="email"/>
+        <button type="submit">View</button>
+      </form>
+    </td>
+    <td>
+      <form th:action="@{/edit}" method="post">
+        <input type="hidden" th:value="${shop.email}" name="email"/>
+        <button type="submit">Edit</button>
+      </form>
+    </td>
+    <td>
+      <form th:action="@{/delete}" method="post">
+        <input type="hidden" th:value="${shop.email}" name="email"/>
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+<a th:href="@{/addEntry}">Add</a>
+</body>
+</html>

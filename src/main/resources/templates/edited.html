@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Edit Entry</title>
+</head>
+<body>
+<h2>Edit entry</h2>
+<form th:action="@{/editToList}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:value="${shop.name}" required>
+    <br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" th:value="${shop.address}" required>
+    <br>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" th:value="${shop.phone}" required>
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" th:value="${shop.email}">
+    <br>
+
+    <label for="site">Site:</label>
+    <input type="text" id="site" name="site" th:value="${shop.site}">
+    <br>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" th:value="${shop.category}" required>
+        <option value="">Select category</option>
+        <option value="Grocery">Grocery</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Sport">Sport</option>
+    </select>
+    <br>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" th:value="${shop.description}">
+    <br>
+
+    <button type="submit">Edit</button>
+</form>
+</body>
+</html>

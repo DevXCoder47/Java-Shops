@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Address Book</title>
+</head>
+<body>
+<h1>Address Book Details</h1>
+<div>
+    <p><strong>Name:</strong> <span th:text="${shop.name}"></span></p>
+    <p><strong>Address:</strong> <span th:text="${shop.address}"></span></p>
+    <p><strong>Phone:</strong> <span th:text="${shop.phone}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${shop.email}"></span></p>
+    <p><strong>Site:</strong> <span th:text="${shop.site}"></span></p>
+    <p><strong>Category:</strong> <span th:text="${shop.category}"></span></p>
+    <p><strong>Description:</strong> <span th:text="${shop.description}"></span></p>
+    <a th:href="@{/home}">return</a>
+</div>
+</body>
+</html>
